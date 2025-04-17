@@ -26,7 +26,7 @@ export const App = () => {
   let visibleGoods = [...goodsFromServer];
 
   if (sortField) {
-    visibleGoods = visibleGoods.sort((good1, good2) => {
+    visibleGoods = [...visibleGoods].sort((good1, good2) => {
       switch (sortField) {
         case ALPHABETICALLY:
           return good1.localeCompare(good2);
@@ -36,12 +36,10 @@ export const App = () => {
           return 0;
       }
     });
-  } else {
-    visibleGoods = [...goodsFromServer];
   }
 
   if (reversed) {
-    visibleGoods = visibleGoods.toReversed();
+    visibleGoods = [...visibleGoods].reverse();
   }
 
   return (
